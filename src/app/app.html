@@ -1,5 +1,27 @@
-<mat-toolbar>
-  <span class="text-title">Lista de Tarefas</span>
-  <button matButton="elevated">Adicionar</button>
-</mat-toolbar>
+<!-- src/app/app.html -->
+
+<header class="main-header">
+  <mat-toolbar>
+    <span class="text-title">Lista de Tarefas</span>
+    <button mat-raised-button color="accent">Adicionar</button>
+  </mat-toolbar>
+</header>
+
+<main class="content">
+  <mat-grid-list cols="2" rowHeight="180px" gutterSize="16px">
+    @for (tarefa of tarefas; track tarefa.id) {
+    <mat-grid-tile>
+      <mat-card class="card-tarefa">
+        <mat-card-header>
+          <mat-card-title>{{ tarefa.dataLimite }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="centro-card">
+          <p class="resumo-texto">{{ tarefa.resumo }}</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    }
+  </mat-grid-list>
+</main>
+
 <router-outlet />
