@@ -1,11 +1,12 @@
 // src/app/app.ts
 
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import { MatIcon } from '@angular/material/icon';
 
 export interface Tarefa {
   id: number;
@@ -16,7 +17,15 @@ export interface Tarefa {
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MatToolbarModule, MatButtonModule, MatGridListModule, MatCardModule],
+  imports: [
+    RouterOutlet,
+    MatToolbarModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatCardModule,
+    RouterLinkWithHref,
+    MatIcon,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

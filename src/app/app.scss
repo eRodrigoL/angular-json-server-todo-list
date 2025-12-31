@@ -22,12 +22,18 @@ mat-toolbar {
 
 // 2. BOTÃO ADICIONAR
 .btn-adicionar {
-  // Aumento de especificidade via diretiva !important para sobrepor regras MDC (Material Components)
-  background-color: #ffd740 !important;
-  color: black !important;
-  font-weight: bold;
-  // Normalização de texto para caixa alta via transformação de renderização
-  text-transform: uppercase;
+  color: #ffffff;
+
+  // Torna o botão visualmente "especial"
+  border-radius: 50%;
+
+  mat-icon {
+    font-size: 24px;
+  }
+
+  &:hover {
+    background-color: darken(#ffffff, 5%) !important;
+  }
 }
 
 // 3. CONTAINER DE CONTEÚDO (Main Layout)

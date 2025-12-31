@@ -3,7 +3,15 @@
 <header class="main-header">
   <mat-toolbar>
     <span class="text-title">Lista de Tarefas</span>
-    <button mat-raised-button color="accent">Adicionar</button>
+    <button
+      mat-icon-button
+      class="btn-adicionar"
+      routerLink="/modal"
+      aria-label="Adicionar tarefa"
+      matTooltip="Adicionar tarefa"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
   </mat-toolbar>
 </header>
 
