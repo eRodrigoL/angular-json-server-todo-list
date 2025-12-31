@@ -1,0 +1,47 @@
+<mat-card class="card-modal modo-view">
+  <!-- HEADER / DATA -->
+  <mat-card-header>
+    <mat-form-field appearance="outline" class="campo-data">
+      <mat-label>Data</mat-label>
+      <input matInput placeholder="dd/mm/aaaa" />
+    </mat-form-field>
+  </mat-card-header>
+
+  <!-- CONTEÚDO -->
+  <mat-card-content>
+    <mat-form-field appearance="outline" class="campo-resumo">
+      <mat-label>Resumo</mat-label>
+      <input matInput />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo-descricao">
+      <mat-label>Descrição</mat-label>
+      <textarea matInput rows="4"></textarea>
+    </mat-form-field>
+  </mat-card-content>
+
+  <!-- AÇÕES -->
+  <mat-card-actions align="end" class="acoes">
+    <!-- AÇÕES DE VISUALIZAÇÃO -->
+    <div class="acoes-view">
+      <button mat-icon-button color="primary" aria-label="Editar tarefa" matTooltip="Editar">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button mat-icon-button color="warn" aria-label="Excluir tarefa" matTooltip="Excluir">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+
+    <!-- AÇÕES DE EDIÇÃO / CRIAÇÃO -->
+    <div class="acoes-edit">
+      <button mat-icon-button color="primary" aria-label="Salvar tarefa" matTooltip="Salvar">
+        <mat-icon>save</mat-icon>
+      </button>
+
+      <button mat-icon-button aria-label="Cancelar edição" matTooltip="Cancelar">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

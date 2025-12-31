@@ -1,0 +1,88 @@
+.card-modal {
+  width: 100%;
+  max-width: 520px;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #e0d3ff;
+  border-radius: 12px;
+  overflow: hidden;
+
+  mat-card-header {
+    background-color: rgba(104, 58, 183, 0.192);
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(103, 58, 183, 0.2);
+
+    .campo-data {
+      width: 100%;
+
+      input {
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  mat-card-content {
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .campo-resumo {
+      input {
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+    }
+
+    .campo-descricao {
+      textarea {
+        font-size: 1rem;
+        line-height: 1.6;
+        resize: vertical;
+      }
+    }
+  }
+
+  mat-card-actions.acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 4px;
+
+    .acoes-view,
+    .acoes-edit {
+      display: flex;
+      gap: 4px;
+    }
+  }
+}
+
+.card-modal.modo-view {
+  mat-form-field {
+    pointer-events: none; // impede foco / cursor
+  }
+
+  .mdc-notched-outline {
+    display: none; // remove borda outline
+  }
+
+  .mdc-text-field {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  input,
+  textarea {
+    color: #333;
+    font-weight: inherit;
+  }
+
+  textarea {
+    resize: none;
+  }
+}
