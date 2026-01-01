@@ -55,6 +55,8 @@ export class App {
       width: '560px',
       maxWidth: '95vw',
       disableClose: true,
+      panelClass: 'modal-tarefa-view',
+      autoFocus: false,
       data: {
         modo: 'view',
         tarefa,
