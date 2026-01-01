@@ -8,6 +8,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { CardModal } from './components/card-modal/card-modal';
 
@@ -28,6 +29,7 @@ export interface Tarefa {
     MatCardModule,
     MatIconModule,
     MatDialogModule,
+    MatTooltipModule,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -42,6 +44,21 @@ export class App {
       width: '560px',
       maxHeight: '95vw',
       disableClose: true,
+      data: {
+        modo: 'create',
+      },
+    });
+  }
+
+  abrirModalVisualizar(tarefa: Tarefa) {
+    this.dialog.open(CardModal, {
+      width: '560px',
+      maxWidth: '95vw',
+      disableClose: true,
+      data: {
+        modo: 'view',
+        tarefa,
+      },
     });
   }
 
