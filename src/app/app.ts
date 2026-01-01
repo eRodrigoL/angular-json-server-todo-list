@@ -1,12 +1,15 @@
 // src/app/app.ts
 
 import { Component, signal } from '@angular/core';
-import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
-import { MatIcon } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+
+import { CardModal } from './components/card-modal/card-modal';
 
 export interface Tarefa {
   id: number;
@@ -23,14 +26,25 @@ export interface Tarefa {
     MatButtonModule,
     MatGridListModule,
     MatCardModule,
-    RouterLinkWithHref,
-    MatIcon,
+    MatIconModule,
+    MatDialogModule,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
 export class App {
   protected readonly title = signal('angular-json-server-todo-list');
+
+  constructor(private dialog: MatDialog) {}
+
+  abrirModal() {
+    this.dialog.open(CardModal, {
+      width: '560px',
+      maxHeight: '95vw',
+      disableClose: true,
+    });
+  }
+
   tarefas: Tarefa[] = [
     {
       id: 1,
