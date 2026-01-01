@@ -37,7 +37,7 @@ export class App {
 
   constructor(private dialog: MatDialog) {}
 
-  abrirModal() {
+  abrirModalCriar() {
     this.dialog.open(CardModal, {
       width: '560px',
       maxHeight: '95vw',

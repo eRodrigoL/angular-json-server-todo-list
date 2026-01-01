@@ -1,3 +1,5 @@
+<!-- src/app/components/card-modal/card-modal.html -->
+
 <mat-card class="card-modal modo-view">
   <!-- HEADER / DATA -->
   <mat-card-header>
@@ -38,8 +40,16 @@
       <button mat-icon-button color="primary" aria-label="Salvar tarefa" matTooltip="Salvar">
         <mat-icon>save</mat-icon>
       </button>
+    </div>
 
-      <button mat-icon-button aria-label="Cancelar edição" matTooltip="Cancelar">
+    <!-- AÇÕES CANCELAR E FECHAR-->
+    <div>
+      <button
+        mat-icon-button
+        aria-label="Cancelar edição"
+        matTooltip="Cancelar"
+        (click)="fecharModal()"
+      >
         <mat-icon>close</mat-icon>
       </button>
     </div>
