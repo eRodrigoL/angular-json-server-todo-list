@@ -66,11 +66,35 @@ export class CardModal {
   }
 
   salvar() {
-    this.tarefaService.createTarefa(this.form).subscribe({
+    this.tarefaService.criarTarefa(this.form).subscribe({
       next: (tarefaCriada) => {
         this.dialogRef.close(tarefaCriada);
       },
       error: (err) => console.error(err),
+    });
+  }
+
+  confirmarExclusao() {
+    if (!this.tarefa) return;
+
+    const confirmou = confirm(
+      'Tem certeza que deseja excluir esta tarefa?\n\nEssa ação não poderá ser desfeita.'
+    );
+
+    if (confirmou) {
+      this.excluir();
+    }
+  }
+
+  excluir() {
+    if (!this.tarefa) return;
+
+    this.tarefaService.deletarTarefa(this.tarefa.id).subscribe({
+      next: () => {
+        // fecha o modal avisando que deletou
+        this.dialogRef.close({ deletou: true, id: this.tarefa!.id });
+      },
+      error: (err) => console.error('Erro ao excluir tarefa', err),
     });
   }
 

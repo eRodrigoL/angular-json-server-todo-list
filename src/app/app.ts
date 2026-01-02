@@ -53,7 +53,7 @@ export class App implements OnInit {
   }
 
   carregarTarefas() {
-    this.tarefaService.getTarefas().subscribe({
+    this.tarefaService.lerTarefa().subscribe({
       next: (tarefas) => (this.tarefas = tarefas),
       error: (err) => console.error('Erro ao carregar tarefas', err),
     });
@@ -80,7 +80,7 @@ export class App implements OnInit {
   }
 
   abrirModalVisualizar(tarefa: Tarefa) {
-    this.dialog.open(CardModal, {
+    const dialogRef = this.dialog.open(CardModal, {
       width: '560px',
       maxWidth: '95vw',
       disableClose: true,
@@ -90,6 +90,13 @@ export class App implements OnInit {
         modo: 'view',
         tarefa,
       },
+    });
+
+    dialogRef.afterClosed().subscribe((resultado) => {
+      if (resultado?.deletou) {
+        this.tarefas = this.tarefas.filter((t) => t.id !== resultado.id);
+        this.cdr.detectChanges();
+      }
     });
   }
 }

@@ -1,12 +1,6 @@
 {
   "tarefas": [
     {
-      "id": "1",
-      "dataLimite": "2026-04-25",
-      "resumo": "Consulta com Dra Ana",
-      "descricao": "Consulta médica com a Dra Ana (NECESSÁRIO levar exames)"
-    },
-    {
       "id": "2",
       "dataLimite": "2026-08-03",
       "resumo": "Renovar CNH",
