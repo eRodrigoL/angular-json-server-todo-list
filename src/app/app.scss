@@ -1,6 +1,7 @@
 // src/app/app.scss
 
-// Importação do namespace 'mat' para acesso a mixins e funções de tema do Angular Material
+// 1. Importações (Módulos nativos do Sass e do Angular Material)
+@use 'sass:color';
 @use '@angular/material' as mat;
 
 // 1. TOOLBAR (Nível Global do Componente)
@@ -32,7 +33,7 @@ mat-toolbar {
   }
 
   &:hover {
-    background-color: darken(#673ab7, 5%) !important;
+    background-color: color.adjust(#673ab7, $lightness: -5%) !important;
   }
 }
 
