@@ -1,6 +1,6 @@
 // src/app/app.ts
 
-import { Component, signal } from '@angular/core';
+import { Component, signal, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,6 +11,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { CardModal } from './components/card-modal/card-modal';
+
+import { TarefaService } from './services/tarefa.service';
 
 export interface Tarefa {
   id: number;
@@ -34,10 +36,23 @@ export interface Tarefa {
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {
+export class App implements OnInit {
   protected readonly title = signal('angular-json-server-todo-list');
 
-  constructor(private dialog: MatDialog) {}
+  tarefas: Tarefa[] = [];
+
+  constructor(private dialog: MatDialog, private tarefaService: TarefaService) {}
+
+  ngOnInit() {
+    this.carregarTarefas();
+  }
+
+  carregarTarefas() {
+    this.tarefaService.getTarefas().subscribe({
+      next: (tarefas) => (this.tarefas = tarefas),
+      error: (err) => console.error('Erro ao carregar tarefas', err),
+    });
+  }
 
   abrirModalCriar() {
     this.dialog.open(CardModal, {
@@ -63,26 +78,4 @@ export class App {
       },
     });
   }
-
-  tarefas: Tarefa[] = [
-    {
-      id: 1,
-      dataLimite: '25/04/2026',
-      resumo: 'Consulta com Dra Ana',
-      descricao:
-        'Consulta médica com a Dra Ana (NECESSÁRIO levar resultado dos exames solicitados)',
-    },
-    {
-      id: 2,
-      dataLimite: '03/08/2026',
-      resumo: 'Renovar CNH',
-      descricao: 'Renovar CNH antes do vencimento 2 meses após',
-    },
-    {
-      id: 3,
-      dataLimite: '05/01/2026',
-      resumo: 'Pagar conta de luz',
-      descricao: 'Valor: R$ 268,41',
-    },
-  ];
 }
