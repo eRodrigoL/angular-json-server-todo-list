@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ChangeDetectorRef } from '@angular/core';
 
 import { CardModal } from './components/card-modal/card-modal';
 
@@ -41,7 +42,11 @@ export class App implements OnInit {
 
   tarefas: Tarefa[] = [];
 
-  constructor(private dialog: MatDialog, private tarefaService: TarefaService) {}
+  constructor(
+    private dialog: MatDialog,
+    private tarefaService: TarefaService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.carregarTarefas();
@@ -55,13 +60,22 @@ export class App implements OnInit {
   }
 
   abrirModalCriar() {
-    this.dialog.open(CardModal, {
+    const dialogRef = this.dialog.open(CardModal, {
       width: '560px',
       maxHeight: '95vw',
       disableClose: true,
       data: {
         modo: 'create',
       },
+    });
+
+    dialogRef.afterClosed().subscribe((novaTarefa) => {
+      if (novaTarefa) {
+        this.tarefas = [...this.tarefas, novaTarefa];
+
+        // 🔥 força atualização imediata da UI
+        this.cdr.detectChanges();
+      }
     });
   }
 

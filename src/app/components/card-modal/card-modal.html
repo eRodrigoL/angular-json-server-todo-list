@@ -1,61 +1,69 @@
 <!-- src/app/components/card-modal/card-modal.html -->
 
-<mat-card class="card-modal" [ngClass]="{ 'modo-view': modo === 'view' }">
-  <!-- HEADER / DATA -->
-  <mat-card-header>
-    <mat-form-field appearance="outline" class="campo-data">
-      <mat-label>Data</mat-label>
-      <input matInput [value]="tarefa?.dataLimite" placeholder="dd/mm/aaaa" />
-    </mat-form-field>
-  </mat-card-header>
+<form #formRef="ngForm">
+  <mat-card class="card-modal" [ngClass]="{ 'modo-view': modo === 'view' }">
+    <!-- HEADER / DATA -->
+    <mat-card-header>
+      <mat-form-field appearance="outline" class="campo-data">
+        <mat-label>Data</mat-label>
+        <input matInput [(ngModel)]="form.dataLimite" name="dataLimite" placeholder="dd/mm/aaaa" />
+      </mat-form-field>
+    </mat-card-header>
 
-  <!-- CONTEÚDO -->
-  <mat-card-content>
-    <mat-form-field appearance="outline" class="campo-resumo">
-      <mat-label>Resumo (nome da terafa)</mat-label>
-      <input matInput [value]="tarefa?.resumo" />
-    </mat-form-field>
+    <!-- CONTEÚDO -->
+    <mat-card-content>
+      <mat-form-field appearance="outline" class="campo-resumo">
+        <mat-label>Resumo (nome da terafa)</mat-label>
+        <input matInput [(ngModel)]="form.resumo" name="resumo" />
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" class="campo-descricao">
-      <mat-label>Descrição</mat-label>
-      <textarea matInput [value]="tarefa?.descricao" rows="4"></textarea>
-    </mat-form-field>
-  </mat-card-content>
+      <mat-form-field appearance="outline" class="campo-descricao">
+        <mat-label>Descrição</mat-label>
+        <textarea matInput [(ngModel)]="form.descricao" name="descricao" rows="4"></textarea>
+      </mat-form-field>
+    </mat-card-content>
 
-  <!-- AÇÕES -->
-  <mat-card-actions align="end" class="acoes">
-    <!-- AÇÕES DE VISUALIZAÇÃO -->
-    @if (modo === 'view') {
-    <div class="acoes-view">
-      <button mat-icon-button color="primary" aria-label="Editar tarefa" matTooltip="Editar">
-        <mat-icon>edit</mat-icon>
-      </button>
+    <!-- AÇÕES -->
+    <mat-card-actions align="end" class="acoes">
+      <!-- AÇÕES DE VISUALIZAÇÃO -->
+      @if (modo === 'view') {
+      <div class="acoes-view">
+        <button mat-icon-button color="primary" aria-label="Editar tarefa" matTooltip="Editar">
+          <mat-icon>edit</mat-icon>
+        </button>
 
-      <button mat-icon-button color="warn" aria-label="Excluir tarefa" matTooltip="Excluir">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </div>
-    }
+        <button mat-icon-button color="warn" aria-label="Excluir tarefa" matTooltip="Excluir">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      }
 
-    <!-- AÇÕES DE EDIÇÃO / CRIAÇÃO -->
-    @if (modo === 'create') {
-    <div class="acoes-edit">
-      <button mat-icon-button color="primary" aria-label="Salvar tarefa" matTooltip="Salvar">
-        <mat-icon>save</mat-icon>
-      </button>
-    </div>
-    }
+      <!-- AÇÕES DE EDIÇÃO / CRIAÇÃO -->
+      @if (modo === 'create') {
+      <div class="acoes-edit">
+        <button
+          mat-icon-button
+          color="primary"
+          aria-label="Salvar tarefa"
+          matTooltip="Salvar"
+          (click)="salvar()"
+        >
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
+      }
 
-    <!-- AÇÕES CANCELAR E FECHAR-->
-    <div>
-      <button
-        mat-icon-button
-        aria-label="Cancelar edição"
-        matTooltip="Cancelar"
-        (click)="fecharModal()"
-      >
-        <mat-icon>close</mat-icon>
-      </button>
-    </div>
-  </mat-card-actions>
-</mat-card>
+      <!-- AÇÕES CANCELAR E FECHAR-->
+      <div>
+        <button
+          mat-icon-button
+          aria-label="Cancelar edição"
+          matTooltip="Cancelar"
+          (click)="fecharModal()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</form>
