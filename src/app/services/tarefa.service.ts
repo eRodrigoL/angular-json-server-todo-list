@@ -23,6 +23,11 @@ export class TarefaService {
     return this.http.get<Tarefa[]>(this.apiUrl);
   }
 
+  // MÉTODO PUT (Update)
+  editarTarefa(id: number, tarefa: Omit<Tarefa, 'id'>) {
+    return this.http.put<Tarefa>(`${this.apiUrl}/${id}`, tarefa);
+  }
+
   // MÉTODO DELETE (Delete)
   deletarTarefa(id: number) {
     return this.http.delete(`${this.apiUrl}/${id}`);

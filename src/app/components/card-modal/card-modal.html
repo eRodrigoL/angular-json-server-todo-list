@@ -28,7 +28,13 @@
       <!-- AÇÕES DE VISUALIZAÇÃO -->
       @if (modo === 'view') {
       <div class="acoes-view">
-        <button mat-icon-button color="primary" aria-label="Editar tarefa" matTooltip="Editar">
+        <button
+          mat-icon-button
+          color="primary"
+          aria-label="Editar tarefa"
+          matTooltip="Editar"
+          (click)="editar()"
+        >
           <mat-icon>edit</mat-icon>
         </button>
 
@@ -53,6 +59,21 @@
           aria-label="Salvar tarefa"
           matTooltip="Salvar"
           (click)="salvar()"
+        >
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
+      }
+
+      <!-- AÇÕES DE EDIÇÃO -->
+      @if (modo === 'edit') {
+      <div class="acoes-edit">
+        <button
+          mat-icon-button
+          color="primary"
+          aria-label="Salvar alterações"
+          matTooltip="Salvar alterações"
+          (click)="salvarEdicao()"
         >
           <mat-icon>save</mat-icon>
         </button>

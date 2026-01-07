@@ -38,7 +38,7 @@ export interface CardModalData {
   styleUrl: './card-modal.scss',
 })
 export class CardModal {
-  modo: 'create' | 'view';
+  modo: 'create' | 'view' | 'edit';
 
   form = {
     dataLimite: '',
@@ -71,6 +71,21 @@ export class CardModal {
         this.dialogRef.close(tarefaCriada);
       },
       error: (err) => console.error(err),
+    });
+  }
+
+  editar() {
+    this.modo = 'edit';
+  }
+
+  salvarEdicao() {
+    if (!this.tarefa) return;
+
+    this.tarefaService.editarTarefa(this.tarefa.id, this.form).subscribe({
+      next: (tarefaAtualizada) => {
+        this.dialogRef.close(tarefaAtualizada);
+      },
+      error: (err) => console.error('Erro ao editar tarefa', err),
     });
   }
 

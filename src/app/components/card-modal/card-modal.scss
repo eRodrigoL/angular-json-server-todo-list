@@ -1,3 +1,5 @@
+// src/app/components/card-modal/card-modal.scss
+
 .card-modal {
   width: 100%;
 
@@ -49,7 +51,10 @@
       textarea {
         font-size: 1rem;
         line-height: 1.6;
+
+        /* comportamento normal nos modos edit/create */
         resize: vertical;
+        overflow-y: auto;
       }
     }
   }
@@ -75,7 +80,7 @@
    MODO VIEW (VISUALIZAÇÃO / LEITURA)
    ====================================================== */
 .card-modal.modo-view {
-  /* impede foco e interação */
+  /* impede interação */
   mat-form-field {
     pointer-events: none;
   }
@@ -103,7 +108,20 @@
     font-weight: 500;
   }
 
+  /* textarea em modo leitura */
   textarea {
     resize: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    /* esconde scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE / Edge antigo */
+  }
+
+  textarea::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none; /* Chrome, Edge, Safari */
   }
 }

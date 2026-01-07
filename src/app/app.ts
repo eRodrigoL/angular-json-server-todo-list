@@ -84,7 +84,6 @@ export class App implements OnInit {
       width: '560px',
       maxWidth: '95vw',
       disableClose: true,
-      panelClass: 'modal-tarefa-view',
       autoFocus: false,
       data: {
         modo: 'view',
@@ -95,8 +94,11 @@ export class App implements OnInit {
     dialogRef.afterClosed().subscribe((resultado) => {
       if (resultado?.deletou) {
         this.tarefas = this.tarefas.filter((t) => t.id !== resultado.id);
-        this.cdr.detectChanges();
+      } else if (resultado?.id) {
+        this.tarefas = this.tarefas.map((t) => (t.id === resultado.id ? resultado : t));
       }
+
+      this.cdr.detectChanges();
     });
   }
 }

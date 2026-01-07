@@ -1,16 +1,16 @@
 {
   "tarefas": [
     {
-      "id": "2",
-      "dataLimite": "2026-08-03",
+      "dataLimite": "03/08/2026",
       "resumo": "Renovar CNH",
-      "descricao": "Renovar CNH antes do vencimento"
+      "descricao": "Renovar CNH antes do vencimento",
+      "id": "2"
     },
     {
-      "id": "3",
-      "dataLimite": "2026-01-05",
+      "dataLimite": "05/01/2026",
       "resumo": "Pagar conta de luz",
-      "descricao": "Valor: R$ 268,41"
+      "descricao": "Valor: R$ 268,41",
+      "id": "3"
     },
     {
       "id": "3b6c",
